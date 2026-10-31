@@ -95,5 +95,20 @@ select { font: inherit; padding: 6px 10px; border-radius: 10px; border: 1px soli
 .confetti { position: fixed; top: -12px; width: 9px; height: 14px; border-radius: 2px; z-index: 10; pointer-events: none; animation: fall 1.9s ease-in forwards; }
 @keyframes fall { to { transform: translate(var(--drift), 105vh) rotate(720deg); opacity: .8; } }
 
-@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+@media (max-width: 900px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .panel { min-width: 0; }
+  .board { width: 100%; max-width: 414px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cell { height: auto; min-width: 0; aspect-ratio: 1; }
+}
+@media (max-width: 480px) {
+  .panel { padding: 18px; }
+  .brand { gap: 8px; min-width: 0; }
+  .logo { flex-shrink: 0; width: 40px; height: 40px; }
+  .icon-btn { flex-shrink: 0; }
+  .tagline { font-size: .7rem; }
+  .controls { flex-wrap: wrap; }
+  .options { gap: 8px; }
+  .option { flex-wrap: wrap; justify-content: center; }
+}
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } .mark path, .mark circle { stroke-dashoffset: 0; } }
